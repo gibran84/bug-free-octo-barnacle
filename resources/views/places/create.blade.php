@@ -1,34 +1,55 @@
+@extends ('layouts.master') @section('body')
 
-@extends ('layouts.master')
+<div class="panel panel-default">
 
-@section('title') Crear Lugar @endsection
+	<div class="panel-heading" style="padding: 0; min-height: 50px">
 
-@section('body')
+		<div class="pull-left" style="padding: 14px; font-weight: bold">Crear
+			Lugar</div>
 
-    <div class="row">
+	</div>
 
-        <div class="col-md-8 col-lg-5">
+	<div class="panel-body">
 
-            <form method="POST" action="/places">
+		<div class="row">
 
-                {{csrf_field()}}
+			<div class="col-md-6">
 
-                <div class="form-group">
+				<form method="POST" action="/places" class="form-horizontal">
 
-                    <label for="name">Nombre</label>
+					{{csrf_field()}} @include('layouts.errors')
 
-                    <input type="text" name="name" class="form-control">
+					<div class="form-group form-group-sm">
 
-                </div>
+						<label for="name" class="col-sm-2 control-label">Nombre</label>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+						<div class="col-sm-10">
 
-            </form>
+							<input type="text" name="name" class="form-control">
 
-        </div>
+						</div>
 
-    </div>
+					</div>
 
+					<div class="form-group form-group-sm">
+
+						<div class="col-sm-offset-2 col-sm-10">
+
+							<button type="submit" class="btn btn-default btn-sm">Guardar</button>
+
+						</div>
+
+					</div>
+
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
 
 
 @endsection

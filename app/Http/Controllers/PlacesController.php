@@ -8,9 +8,20 @@ use Illuminate\Http\Request;
 
 class PlacesController extends Controller
 {
+    
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
-        $places = Place::all();
+        $places = Place::orderBy('name', 'asc')->get();
 
         return view('places.index', compact('places'));
     }
@@ -27,6 +38,12 @@ class PlacesController extends Controller
 
     public function store()
     {
+        $this->validate(request(), [
+
+           'name' => 'required'
+
+        ]);
+
         $dateTime = new \DateTime();
 
         Place::create([

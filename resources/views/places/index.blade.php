@@ -1,47 +1,57 @@
-
-@extends ('layouts.master')
-
-@section('title') Listar Lugares @endsection
+@extends ('layouts.master') 
 
 @section('body')
 
-    <div class="table-responsive">
+	<div class="panel panel-default">
 
-        <table class="table table-striped">
+		<div class="panel-heading" style="padding: 0; min-height:50px">
+		
+			<div class="pull-left" style="padding: 14px; font-weight:bold">Lista de Lugares</div>
 
-            <thead>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{{route('places-create')}}">+ Agregar</a></li>
+				</ul>
+			</div>
 
-                <tr>
+		</div>
 
-                    <th>#</th>
+		<table class="table">
 
-                    <th>Nombre</th>
+			<thead>
 
-                    <th>Creado</th>
+				<tr>
 
-                </tr>
+					<th>#</th>
 
-            </thead>
+					<th>Nombre</th>
 
-            <tbody>
+					<th>Creado</th>
 
-                @foreach ($places as $place)
-                    <tr>
+				</tr>
 
-                        <td>{{ $place->id }}</td>
+			</thead>
 
-                        <td>{{ $place->name }}</td>
+			<tbody>
 
-                        <td>{{ $place->created_at }}</td>
+				@foreach ($places as $place)
+				<tr>
 
-                    </tr>
+					<td>{{ $place->id }}</td>
 
-                @endforeach
+					<td>{{ $place->name }}</td>
 
-            </tbody>
+					<td>{{ $place->created_at }}</td>
 
-        </table>
+				</tr>
 
-    </div>
+				@endforeach
+
+			</tbody>
+
+		</table>
+
+	</div>
 
 @endsection

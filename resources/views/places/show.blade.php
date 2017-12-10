@@ -1,52 +1,79 @@
+@extends ('layouts.master') @section('body')
 
-@extends ('layouts.master')
 
-@section('title') Ver Lugar @endsection
+<div class="panel panel-default">
 
-@section('body')
+	<div class="panel-heading" style="padding: 0; min-height: 50px">
 
-    <div class="table-responsive">
+		<div class="pull-left" style="padding: 14px; font-weight: bold">Ver
+			Lugar</div>
 
-        <table class="table">
+	</div>
 
-            <tbody>
+	<table class="table">
 
-                <tr>
+		<tbody>
 
-                    <th>#</th>
+			<tr>
 
-                    <td>{{$place->id}}</td>
+				<th style="width: 100px">Nombre</th>
 
-                </tr>
+				<td>{{$place->name}}</td>
 
-                <tr>
+			</tr>
 
-                    <th>Nombre</th>
+			<tr>
 
-                    <td>{{$place->name}}</td>
+				<th>Creado</th>
 
-                </tr>
+				<td>{{$place->created_at}}</td>
 
-                <tr>
+			</tr>
 
-                    <th>Creado</th>
+		</tbody>
 
-                    <td>{{$place->created_at}}</td>
+	</table>
 
-                </tr>
+</div>
 
-                <tr>
+<div class="panel panel-default">
 
-                    <th>Actualizado</th>
+	<table class="table">
 
-                    <td>{{$place->updated_at}}</td>
+		<thead>
 
-                </tr>
+			<tr>
 
-            </tbody>
+				<th>#</th>
 
-        </table>
+				<th>Nombre</th>
 
-    </div>
+				<th>Creado</th>
+
+			</tr>
+
+		</thead>
+
+		<tbody>
+
+			@foreach ($place->groups as $group)
+			
+			<tr>
+
+				<td>{{ $group->id }}</td>
+
+				<td>{{ $group->name }}</td>
+
+				<td>{{ $group->created_at }}</td>
+
+			</tr>
+
+			@endforeach
+
+		</tbody>
+
+	</table>
+
+</div>
 
 @endsection
