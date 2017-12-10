@@ -13,4 +13,9 @@ class Place extends Model
         return $this->hasMany(Group::class);
     }
     
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }

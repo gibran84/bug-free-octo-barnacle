@@ -17,7 +17,9 @@ class CreateGroupsTable extends Migration
             
             $table->increments('id');
             
-            $table->integer('id_place');
+            $table->integer('user_id');
+            
+            $table->integer('place_id');
             
             $table->text('name');
             

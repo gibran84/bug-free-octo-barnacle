@@ -3,6 +3,6 @@
     <a class="nav-link" href="{{route('places')}}">Lugares</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Grupos</a>
+    <a class="nav-link" href="{{route('groups')}}">Grupos</a>
   </li>
 </ul>

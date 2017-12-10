@@ -3,13 +3,6 @@
 
 <div class="panel panel-default">
 
-	<div class="panel-heading" style="padding: 0; min-height: 50px">
-
-		<div class="pull-left" style="padding: 14px; font-weight: bold">Ver
-			Lugar</div>
-
-	</div>
-
 	<table class="table">
 
 		<tbody>
@@ -24,9 +17,17 @@
 
 			<tr>
 
-				<th>Creado</th>
+				<th>Fecha de Creación</th>
 
 				<td>{{$place->created_at}}</td>
+
+			</tr>
+			
+			<tr>
+
+				<th>Creado por</th>
+
+				<td>{{$place->user->name}}</td>
 
 			</tr>
 
@@ -37,6 +38,12 @@
 </div>
 
 <div class="panel panel-default">
+
+	<div class="panel-heading" style="padding: 0; min-height: 50px">
+	
+		<div class="pull-left" style="padding: 14px; font-weight:bold">Grupos</div>
+
+	</div>
 
 	<table class="table">
 

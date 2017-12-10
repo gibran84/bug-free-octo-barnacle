@@ -47,9 +47,11 @@ class PlacesController extends Controller
         $dateTime = new \DateTime();
 
         Place::create([
+            
+            'user_id' => auth()->user()->id,
 
             'name' => \request('name'),
-
+            
             'created_at' => $dateTime->format('Y-m-d H:i:s'),
 
             'updated_at' => $dateTime->format('Y-m-d H:i:s')

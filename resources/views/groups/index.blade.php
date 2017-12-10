@@ -6,12 +6,12 @@
 
 		<div class="panel-heading" style="padding: 0; min-height:50px">
 		
-			<div class="pull-left" style="padding: 14px; font-weight:bold">Lista de Lugares</div>
+			<div class="pull-left" style="padding: 14px; font-weight:bold">Lista de Grupos</div>
 
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{route('places-create')}}">+ Agregar</a></li>
+					<li><a href="{{route('create-group')}}">+ Agregar</a></li>
 				</ul>
 			</div>
 
@@ -37,17 +37,17 @@
 
 			<tbody>
 
-				@foreach ($places as $place)
+				@foreach ($groups as $group)
 				
 				<tr>
 
-					<td>{{ $place->id }}</td>
+					<td>{{ $group->id }}</td>
 
-					<td>{{ $place->name }}</td>
+					<td>{{ $group->name }}</td>
 
-					<td>{{ $place->created_at }}</td>
+					<td>{{ $group->created_at }}</td>
 					
-					<td><a href="{{route('show-place', ['place' => $place])}}">Ver</a></td>
+					<td><a href="{{route('show-group', ['group' => $group])}}">Ver</a></td>
 
 				</tr>
 
