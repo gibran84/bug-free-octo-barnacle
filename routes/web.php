@@ -21,6 +21,10 @@ Route::get('/places', 'PlacesController@index')->name('places');
 
 Route::get('/places/create', 'PlacesController@create')->name('places-create');
 
+Route::get('/places/{place}/edit', 'PlacesController@edit')->name('place-edit');
+
+Route::get('/places/{place}/edit', 'PlacesController@edit')->name('update-place');
+
 Route::get('/places/{place}', 'PlacesController@show')->name('show-place');
 
 Route::post('/places', 'PlacesController@store');

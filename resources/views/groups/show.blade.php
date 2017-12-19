@@ -32,9 +32,25 @@
 
 			<tr>
 
-				<th>Creado</th>
+				<th>Fecha de Creación</th>
 
 				<td>{{$group->created_at}}</td>
+
+			</tr>
+			
+			<tr>
+
+				<th>Última Actualización</th>
+
+				<td>{{$group->updated_at}}</td>
+
+			</tr>
+			
+			<tr>
+
+				<th>Creado por</th>
+
+				<td>{{$group->user->name}}</td>
 
 			</tr>
 

@@ -30,6 +30,28 @@ class PlacesController extends Controller
     {
         return view('places.show', compact('place'));
     }
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Place  $group
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Place $place)
+    {
+        return view('places.edit', compact('place'));
+    }
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Place  $place
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Place $place)
+    {
+    }
 
     public function create()
     {

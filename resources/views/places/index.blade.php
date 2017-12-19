@@ -47,7 +47,13 @@
 
 					<td>{{ $place->created_at }}</td>
 					
-					<td><a href="{{route('show-place', ['place' => $place])}}">Ver</a></td>
+					<td>
+					
+						<a href="{{route('show-place', ['place' => $place])}}">Ver</a>
+						
+						<a href="{{route('place-edit', ['place' => $place])}}">Editar</a>
+						
+					</td>
 
 				</tr>
 
