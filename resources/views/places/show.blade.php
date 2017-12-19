@@ -25,6 +25,14 @@
 			
 			<tr>
 
+				<th>Fecha de Actualización</th>
+
+				<td>{{$place->updated_at}}</td>
+
+			</tr>
+			
+			<tr>
+
 				<th>Creado por</th>
 
 				<td>{{$place->user->name}}</td>

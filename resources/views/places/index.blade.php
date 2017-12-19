@@ -51,7 +51,7 @@
 					
 						<a href="{{route('show-place', ['place' => $place])}}">Ver</a>
 						
-						<a href="{{route('place-edit', ['place' => $place])}}">Editar</a>
+						<a href="{{route('edit-group', ['place' => $place])}}">Editar</a>
 						
 					</td>
 

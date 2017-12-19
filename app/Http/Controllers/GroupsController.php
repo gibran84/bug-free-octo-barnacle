@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use Illuminate\Http\Request;
+use App\Place;
 
 class GroupsController extends Controller
 {
@@ -94,7 +95,11 @@ class GroupsController extends Controller
      */
     public function edit(Group $group)
     {
-        //
+        
+        $comboPlaces = Place::toCombo();
+        
+        
+        return view('groups.edit', compact('group', 'comboPlaces'));
     }
 
     /**

@@ -18,4 +18,18 @@ class Place extends Model
         return $this->belongsTo(User::class);
     }
     
+    public static function toCombo()
+    {
+        $places = Place::orderBy('name', 'asc')->get();
+        
+        $combo = [];
+        
+        foreach ($places as $place)
+        {
+            $combo[$place->id] = $place->name;
+        }
+        
+        return $combo;
+    }
+    
 }

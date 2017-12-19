@@ -51,6 +51,25 @@ class PlacesController extends Controller
      */
     public function update(Request $request, Place $place)
     {
+        
+        $this->validate(request(), [
+            
+            'name' => 'required'
+            
+        ]);
+        
+        $dateTime = new \DateTime();
+        
+        $place->update([
+            
+            'name' => \request('name'),
+            
+            'updated_at' => $dateTime->format('Y-m-d H:i:s')
+            
+        ]);
+        
+        return redirect('/places');
+        
     }
 
     public function create()

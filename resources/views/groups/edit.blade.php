@@ -4,8 +4,8 @@
 
 	<div class="panel-heading" style="padding: 0; min-height: 50px">
 
-		<div class="pull-left" style="padding: 14px; font-weight: bold">Crear
-			Lugar</div>
+		<div class="pull-left" style="padding: 14px; font-weight: bold">Editar
+			Grupo</div>
 
 	</div>
 
@@ -18,10 +18,10 @@
 					
 					{{ Form::model(
 					
-					$place, 
+					$group, 
 					[
 					
-						'url' => route('place-update', ['place' => $place]),
+						'url' => route('update-group', ['group' => $group]),
 						'class' => 'form-horizontal',
 						'method' => 'put'
 					
@@ -38,6 +38,18 @@
 						<div class="col-sm-10">
 						
 							{{ Form::text('name', null, ['class' => 'form-control']) }}
+						
+						</div>
+
+					</div>
+					
+					<div class="form-group form-group-sm">
+
+						{{ Form::label('id_group', 'Grupo', ['class' => 'col-sm-2 control-label', 'for' => 'idGroup']) }}
+						
+						<div class="col-sm-10">
+						
+							{{ Form::select('id_group', $comboPlaces, null, ['class' => 'form-control']) }}
 						
 						</div>
 
