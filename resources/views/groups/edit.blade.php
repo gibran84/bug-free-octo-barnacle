@@ -15,55 +15,38 @@
 
 			<div class="col-md-6">
 
-					
-					{{ Form::model(
-					
-					$group, 
-					[
-					
-						'url' => route('update-group', ['group' => $group]),
-						'class' => 'form-horizontal',
-						'method' => 'put'
-					
-					]
-					
-					) }}
-					
-					@include('layouts.errors')
 
-					<div class="form-group form-group-sm">
+				{{ Form::model( $group, [ 'url' => route('update-group', ['group' =>
+				$group]), 'class' => 'form-horizontal', 'method' => 'put' ] ) }}
 
-						{{ Form::label('name', 'Nombre', ['class' => 'col-sm-2 control-label', 'for' => 'name']) }}
-						
-						<div class="col-sm-10">
-						
-							{{ Form::text('name', null, ['class' => 'form-control']) }}
-						
-						</div>
+				@include('layouts.errors')
 
-					</div>
-					
-					<div class="form-group form-group-sm">
+				<div class="form-group form-group-sm">
 
-						{{ Form::label('id_group', 'Grupo', ['class' => 'col-sm-2 control-label', 'for' => 'idGroup']) }}
-						
-						<div class="col-sm-10">
-						
-							{{ Form::select('id_group', $comboPlaces, null, ['class' => 'form-control']) }}
-						
-						</div>
+					{{ Form::label('name', 'Nombre', ['class' => 'col-sm-2
+					control-label', 'for' => 'name']) }}
 
-					</div>
+					<div class="col-sm-10">{{ Form::text('name', null, ['class' =>
+						'form-control']) }}</div>
 
-					<div class="form-group form-group-sm">
+				</div>
 
-						<div class="col-sm-offset-2 col-sm-10">
+				<div class="form-group form-group-sm">
 
-							{{ Form::button('Guardar', ['class' => 'btn btn-default btn-sm', 'type' => 'submit']) }}
+					{{ Form::label('placeId', 'Grupo', ['class' => 'col-sm-2
+					control-label', 'for' => 'placeId']) }}
 
-						</div>
+					<div class="col-sm-10">{{ Form::select('place_id', $comboPlaces,
+						null, ['class' => 'form-control']) }}</div>
 
-					</div>
+				</div>
+
+				<div class="form-group form-group-sm">
+
+					<div class="col-sm-offset-2 col-sm-10">{{ Form::button('Guardar',
+						['class' => 'btn btn-default btn-sm', 'type' => 'submit']) }}</div>
+
+				</div>
 
 				{{ Form::close() }}
 

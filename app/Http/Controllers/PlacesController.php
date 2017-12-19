@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Place;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
+use App\Repositories\Places;
 
 class PlacesController extends Controller
 {
@@ -21,8 +22,17 @@ class PlacesController extends Controller
     
     public function index()
     {
-        $places = Place::orderBy('name', 'asc')->get();
-
+        
+        $places = Places::all([
+            
+            'orderBy' => [
+                
+                'name' => 'asc'
+                
+            ]
+            
+        ]);
+        
         return view('places.index', compact('places'));
     }
 

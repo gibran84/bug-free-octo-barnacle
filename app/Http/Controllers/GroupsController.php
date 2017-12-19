@@ -111,7 +111,27 @@ class GroupsController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        //
+        $this->validate(request(), [
+            
+            'name' => 'required',
+            
+            'place_id' => 'required'
+            
+        ]);
+        
+        $dateTime = new \DateTime();
+        
+        $group->update([
+            
+            'name' => \request('name'),
+            
+            'place_id' => \request('place_id'),
+            
+            'updated_at' => $dateTime->format('Y-m-d H:i:s')
+            
+        ]);
+        
+        return redirect('/groups');
     }
 
     /**

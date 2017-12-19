@@ -47,9 +47,10 @@
 
 					<td>{{ $group->created_at }}</td>
 					
-					<td><a href="{{route('show-group', ['group' => $group])}}">Ver</a></td>
-					
-					<td><a href="{{route('edit-group', ['group' => $group])}}">Editar</a></td>
+					<td>
+    					<a href="{{route('show-group', ['group' => $group])}}">Ver</a>
+    					<a href="{{route('edit-group', ['group' => $group])}}">Editar</a>
+					</td>
 
 				</tr>
 
