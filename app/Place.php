@@ -32,4 +32,11 @@ class Place extends Model
         return $combo;
     }
     
+    public function users()
+    {
+        
+        return $this->belongsToMany(User::class);
+        
+    }
+    
 }

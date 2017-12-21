@@ -4,7 +4,7 @@
 
 	<div class="panel-heading" style="padding: 0; min-height: 50px">
 
-		<div class="pull-left" style="padding: 14px; font-weight: bold">Crear
+		<div class="pull-left" style="padding: 14px; font-weight: bold">Editar
 			Lugar</div>
 
 	</div>

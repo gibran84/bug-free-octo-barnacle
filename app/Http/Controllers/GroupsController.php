@@ -26,7 +26,20 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        $groups = Group::orderBy('name', 'asc')->get();
+        
+//         $groups = Group::orderBy('name', 'asc')->get();
+        
+        $query = Group::with('place');
+        
+        $groups = $query->get();
+        
+        
+        foreach ($groups as $group)
+        {
+            
+            $place = $group->getRelation('place');
+            
+        }
         
         return view('groups.index', compact('groups'));
     }
@@ -38,7 +51,9 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        return view('groups.create');
+        $comboPlaces = Place::toCombo();
+        
+        return view('groups.create', compact('group', 'comboPlaces'));
     }
 
     /**

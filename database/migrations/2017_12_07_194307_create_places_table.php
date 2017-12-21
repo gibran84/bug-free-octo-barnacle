@@ -24,6 +24,16 @@ class CreatePlacesTable extends Migration
             $table->timestamps();
 
         });
+        
+        Schema::create('user_place', function (Blueprint $table) {
+            
+            $table->integer('user_id');
+            
+            $table->integer('place_id');
+            
+            $table->primary(['user_id', 'place_id']);
+            
+        });
     }
 
     /**

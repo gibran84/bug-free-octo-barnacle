@@ -26,6 +26,8 @@
 					<th>#</th>
 
 					<th>Nombre</th>
+					
+					<th>Lugar</th>
 
 					<th>Creado</th>
 					
@@ -44,6 +46,8 @@
 					<td>{{ $group->id }}</td>
 
 					<td>{{ $group->name }}</td>
+					
+					<td>{{ $group->getRelation('place')->name }}</td>
 
 					<td>{{ $group->created_at }}</td>
 					

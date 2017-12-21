@@ -30,16 +30,14 @@
 						</div>
 
 					</div>
-					
+
 					<div class="form-group form-group-sm">
 
-						<label for="placeID" class="col-sm-2 control-label">Lugar</label>
+						{{ Form::label('placeId', 'Grupo', ['class' => 'col-sm-2
+						control-label', 'for' => 'placeId']) }}
 
-						<div class="col-sm-10">
-
-							<input type="text" name="place_id" id="placeID" class="form-control">
-
-						</div>
+						<div class="col-sm-10">{{ Form::select('place_id', $comboPlaces,
+							null, ['class' => 'form-control']) }}</div>
 
 					</div>
 

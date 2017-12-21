@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Place;
-use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use App\Repositories\Places;
+use App\Http\Requests\PlaceForm;
 
 class PlacesController extends Controller
 {
@@ -41,6 +41,20 @@ class PlacesController extends Controller
         return view('places.show', compact('place'));
     }
     
+    public function create()
+    {
+        return view('places.create');
+    }
+
+    public function store(Request $request, PlaceForm $placeForm)
+    {
+        $placeForm->persist();
+        
+        session()->flash('message', config('constants.STORED'));
+
+        return redirect('/places');
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -59,56 +73,16 @@ class PlacesController extends Controller
      * @param  \App\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Place $place)
+    public function update(Request $request, PlaceForm $placeForm, Place $place)
     {
         
-        $this->validate(request(), [
-            
-            'name' => 'required'
-            
-        ]);
+        $placeForm->place = $place;
         
-        $dateTime = new \DateTime();
+        $placeForm->persist();
         
-        $place->update([
-            
-            'name' => \request('name'),
-            
-            'updated_at' => $dateTime->format('Y-m-d H:i:s')
-            
-        ]);
+        session()->flash('message', config('constants.UPDATED'));
         
         return redirect('/places');
         
-    }
-
-    public function create()
-    {
-        return view('places.create');
-    }
-
-    public function store()
-    {
-        $this->validate(request(), [
-
-           'name' => 'required'
-
-        ]);
-
-        $dateTime = new \DateTime();
-
-        Place::create([
-            
-            'user_id' => auth()->user()->id,
-
-            'name' => \request('name'),
-            
-            'created_at' => $dateTime->format('Y-m-d H:i:s'),
-
-            'updated_at' => $dateTime->format('Y-m-d H:i:s')
-
-        ]);
-
-        return redirect('/places');
     }
 }

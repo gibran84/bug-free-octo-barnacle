@@ -1,19 +1,19 @@
 @extends ('layouts.master') 
 
 @section('body')
-
+	
 	@include('layouts.flmsg')
 	
 	<div class="panel panel-default">
 
 		<div class="panel-heading" style="padding: 0; min-height:50px">
 		
-			<div class="pull-left" style="padding: 14px; font-weight:bold">Lista de Lugares</div>
+			<div class="pull-left" style="padding: 14px; font-weight:bold">Lista de Usuarios</div>
 
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="{{route('places-create')}}">+ Agregar</a></li>
+					<li><a href="{{route('create-user')}}">+ Agregar</a></li>
 				</ul>
 			</div>
 
@@ -39,21 +39,21 @@
 
 			<tbody>
 
-				@foreach ($places as $place)
+				@foreach ($users as $user)
 				
 				<tr>
 
-					<td>{{ $place->id }}</td>
+					<td>{{ $user->id }}</td>
 
-					<td>{{ $place->name }}</td>
+					<td>{{ $user->name }}</td>
 
-					<td>{{ $place->created_at }}</td>
+					<td>{{ $user->created_at }}</td>
 					
 					<td>
 					
-						<a href="{{route('show-place', ['place' => $place])}}">Ver</a>
+						<a href="{{route('show-user', ['user' => $user])}}">Ver</a>
 						
-						<a href="{{route('edit-place', ['place' => $place])}}">Editar</a>
+						<a href="{{route('edit-user', ['user' => $user])}}">Editar</a>
 						
 					</td>
 
