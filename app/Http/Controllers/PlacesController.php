@@ -6,6 +6,7 @@ use App\Place;
 use Illuminate\Http\Request;
 use App\Repositories\Places;
 use App\Http\Requests\PlaceForm;
+use Illuminate\Auth\Access\Gate;
 
 class PlacesController extends Controller
 {
@@ -29,7 +30,9 @@ class PlacesController extends Controller
                 
                 'name' => 'asc'
                 
-            ]
+            ],
+            
+            'paginate' => 10
             
         ]);
         
@@ -38,6 +41,13 @@ class PlacesController extends Controller
 
     public function show(Place $place)
     {
+        
+        if (auth()->user()->cant('showPlace', $place)) {
+            
+            throw new \Exception(config('constants.DENIED'));
+            
+        }
+        
         return view('places.show', compact('place'));
     }
     
@@ -63,6 +73,12 @@ class PlacesController extends Controller
      */
     public function edit(Place $place)
     {
+        if (\Gate::denies('update-place', $place)) {
+            
+            throw new \Exception(config('constants.DENIED'));
+            
+        }
+        
         return view('places.edit', compact('place'));
     }
     

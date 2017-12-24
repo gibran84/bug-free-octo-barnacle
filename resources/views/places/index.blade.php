@@ -13,7 +13,14 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+					
+					@can('create-place')
+					
 					<li><a href="{{route('places-create')}}">+ Agregar</a></li>
+					
+					@endcan
+					
+					<li><a href="{{route('places-create')}}">- Eliminar</a></li>
 				</ul>
 			</div>
 
@@ -24,6 +31,8 @@
 			<thead>
 
 				<tr>
+				
+					<th>&nbsp;</th>
 
 					<th>#</th>
 
@@ -31,7 +40,7 @@
 
 					<th>Creado</th>
 					
-					<th></th>
+					<th>&nbsp;</th>
 
 				</tr>
 
@@ -42,6 +51,8 @@
 				@foreach ($places as $place)
 				
 				<tr>
+				
+					<td>{{ Form::checkbox('place_id', $place->id) }}</td>
 
 					<td>{{ $place->id }}</td>
 
@@ -51,9 +62,21 @@
 					
 					<td>
 					
-						<a href="{{route('show-place', ['place' => $place])}}">Ver</a>
+						<ul class="nav nav-pills">
 						
-						<a href="{{route('edit-place', ['place' => $place])}}">Editar</a>
+						@can('show-places')
+						
+						<li role="presentation" class=""><a href="{{route('show-place', ['place' => $place])}}">Ver</a></li>
+						
+						@endcan
+						
+						@can('edit-place')
+						
+						<li role="presentation" class=""><a href="{{route('edit-place', ['place' => $place])}}">Editar</a></li>
+						
+						@endcan
+						
+						</ul>
 						
 					</td>
 
@@ -66,5 +89,7 @@
 		</table>
 
 	</div>
+	
+	{{ $places->links() }}
 
 @endsection

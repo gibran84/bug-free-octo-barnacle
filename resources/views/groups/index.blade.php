@@ -11,7 +11,13 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+				
+					@can('create-group')
+				
 					<li><a href="{{route('create-group')}}">+ Agregar</a></li>
+					
+					@endcan
+					
 				</ul>
 			</div>
 
@@ -52,8 +58,19 @@
 					<td>{{ $group->created_at }}</td>
 					
 					<td>
+					
+						@can('show-groups')
+						
     					<a href="{{route('show-group', ['group' => $group])}}">Ver</a>
+    					
+    					@endcan
+    					
+    					@can('edit-group')
+    					
     					<a href="{{route('edit-group', ['group' => $group])}}">Editar</a>
+    					
+    					@endcan
+    					
 					</td>
 
 				</tr>

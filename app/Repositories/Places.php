@@ -1,47 +1,37 @@
-<?php 
-
+<?php
 
 namespace App\Repositories;
-
-
 
 use App\Place;
 
 class Places
 
 {
-    
+
     public static function all($options = [])
     
     {
+        $query = Place::query();
         
-        if (!empty($options))
-            
+        if (isset($options['orderBy'])) 
         {
-            
-            if (isset($options['orderBy'])) 
-                
+            foreach ($options['orderBy'] as $key => $value) 
             {
-                foreach ($options['orderBy'] as $key => $orderBy)
-                    
-                {
-                    
-                    Place::orderBy($key, $orderBy);
-                    
-                }
-                
+                $query->orderBy($key, $value);
             }
-            
-            
         }
         
         
-        $places = Place::query()->get();
-        
-        
+        if (key_exists('paginate', $options)) {
+            
+            $places = $query->paginate($options['paginate']);
+            
+        } else {
+            
+            $places = $query->paginate(config('constants.PAGINATE'));
+            
+        }
         
         return $places;
-        
     }
-    
 }

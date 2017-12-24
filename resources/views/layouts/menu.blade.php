@@ -19,7 +19,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{route('places')}}">Corporativo</a></li>
+                        <li><a href="{{route('corporate')}}">Corporativo</a></li>
                         <li><a href="">Empleados</a></li>
                         <li><a href="">Clientes</a></li>
                         <li><a href="">Vales</a></li>
