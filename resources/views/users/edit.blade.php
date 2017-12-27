@@ -16,7 +16,7 @@
 			<div class="col-md-6">
 
 				{{ Form::model( $user, [ 'url' => route('update-user', ['user' =>
-				$user]), 'class' => 'form-horizontal', 'method' => 'put' ] ) }}
+				$user]), 'class' => 'form-horizontal', 'method' => 'put', 'enctype' => 'multipart/form-data' ] ) }}
 
 					{{csrf_field()}} @include('layouts.errors')
 
@@ -48,6 +48,20 @@
 							</span> @endif
 						</div>
 					</div>
+					
+					<div class="form-group{{ $errors->has('portrait') ? ' has-error' : '' }} form-group-sm">
+                        <label for="portrait" class="col-md-4 control-label">Retrato</label>
+
+                        <div class="col-md-6">
+                            <input id="portrait" type="file" class="form-control" name="portrait" value="{{ old('portrait') }}" required>
+
+                            @if ($errors->has('portrait'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('portrait') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
 
 					<div class="form-group form-group-sm">
 

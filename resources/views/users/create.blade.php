@@ -15,7 +15,7 @@
 
 			<div class="col-md-6">
 
-				<form method="POST" action="/users" class="form-horizontal">
+				<form method="POST" action="/users" class="form-horizontal" enctype="multipart/form-data">
 
 					{{csrf_field()}} @include('layouts.errors')
 					
@@ -43,6 +43,20 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('portrait') ? ' has-error' : '' }} form-group-sm">
+                            <label for="portrait" class="col-md-4 control-label">Retrato</label>
+
+                            <div class="col-md-6">
+                                <input id="portrait" type="file" class="form-control" name="portrait" value="{{ old('portrait') }}" required>
+
+                                @if ($errors->has('portrait'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('portrait') }}</strong>
                                     </span>
                                 @endif
                             </div>

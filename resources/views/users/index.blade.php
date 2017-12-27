@@ -31,6 +31,8 @@
 
 					<th>Creado</th>
 					
+					<th>Retrato</th>
+					
 					<th></th>
 
 				</tr>
@@ -48,6 +50,8 @@
 					<td>{{ $user->name }}</td>
 
 					<td>{{ $user->created_at }}</td>
+					
+					<td>{{ Html::Image('storage/' . $user->portrait, 'retrato', ['style' => 'width:50px;height:50px']) }}</td>
 					
 					<td>
 					

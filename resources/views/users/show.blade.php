@@ -31,6 +31,14 @@
 
 			</tr>
 			
+			<tr>
+
+				<th>Retrato</th>
+
+				<td><img src="{{$base64Portrait}}" style="height:100px;width:100px"></td>
+
+			</tr>
+			
 		</tbody>
 
 	</table>

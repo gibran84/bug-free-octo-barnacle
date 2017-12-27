@@ -78,10 +78,13 @@ class UserController extends Controller
         
         \DB::transaction(function () {
             
+            $portrait = request()->file('portrait');
+            
             $user = User::create([
                 'name' => \request('name'),
                 'email' => \request('email'),
-                'password' => bcrypt(\request('password'))
+                'password' => bcrypt(\request('password')),
+                'portrait' => $portrait
             ]);
             
             foreach (\request('places') as $placeId) {
@@ -105,7 +108,24 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        
+        $filename = storage_path('app/public/' . $user->portrait);
+        
+        $im = @imagecreatefromjpeg($filename);
+        
+        
+        if (!$im) {
+            
+            echo "no se encuentra";
+            
+        }
+        
+        $type = 'jpeg';
+        
+        $data = file_get_contents($filename);
+        $base64Portrait = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        
+        return view('users.show', compact('user', 'base64Portrait'));
     }
 
     /**
@@ -132,19 +152,17 @@ class UserController extends Controller
     {
         \DB::transaction(function ($user) use ($user) {
             
+            $portrait = \request()->file('portrait')->store('public');
+            
+            $portrait = explode('/', $portrait);
+            
             $user->update([
                 'name' => \request('name'),
-                'email' => \request('email')
+                'email' => \request('email'),
+                'portrait' => $portrait[1]
             ]);
             
-            $user->places()->detach();
-            
-            foreach (\request('places') as $placeId) {
-                
-                $place = Place::find($placeId);
-                
-                $user->places()->attach($place);
-            }
+            $user->places()->sync(\request('places'));
             
         });
         

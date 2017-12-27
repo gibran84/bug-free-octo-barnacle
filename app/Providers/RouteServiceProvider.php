@@ -26,6 +26,17 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+        
+        /*
+         * here we can put customized routes
+         * for example to change the type of the value in the request
+         * in order to receive an string for example
+         * instead of an id
+         */
+        
+//         \Route::bind('user', function($username){
+//             return \App\User::where('username', $username)->firstOrFail();
+//         });
     }
 
     /**
